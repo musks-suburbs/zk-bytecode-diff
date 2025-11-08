@@ -51,7 +51,10 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     start_time = time.time()
     args = parse_args()
-
+    # New: Prevent comparing the same address
+    if args.address_a.lower() == args.address_b.lower():
+        print("⚠️ Both addresses are identical — comparison skipped (no difference possible).")
+        sys.exit(0)
     # Basic RPC sanity check
     if not args.rpc.startswith("http"):
         print("❌ Invalid RPC URL format. It must start with 'http' or 'https'.")
