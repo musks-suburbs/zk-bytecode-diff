@@ -41,3 +41,13 @@ Emit JSON output for pipelines:
 ⚠️ Bytecodes differ! Length delta: 128 bytes  
 ⏱️ Completed in 0.53s  
 
+## Notes
+- If a contract’s bytecode is empty (e.g., EOA), the hash will be `0x0`.  
+- Works for L1 and L2 networks — just switch the RPC endpoint.  
+- Use in CI/CD pipelines to enforce identical deployments across environments.  
+- Useful for Aztec/Zama rollup verifiers, bridges, and cross-chain proofs.  
+- Always use a fixed block number for deterministic audits.  
+- Exit codes:  
+  `0` → Identical bytecode  
+  `2` → Mismatch or error.  
+
